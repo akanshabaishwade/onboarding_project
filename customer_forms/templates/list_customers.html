@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>List Customers</title>
+</head>
+<body>
+    <header>
+        <h1>List Customers</h1>
+    </header>
+    
+    <ul>
+        {% for customer in customers %}
+        <li>{{ customer.name }} - {{ customer.email }}</li>
+        {% endfor %}
+    </ul>
+
+    <footer>
+        <p>By following these steps, we aim to streamline the customer onboarding process.</p>
+    </footer>
+</body>
+</html>

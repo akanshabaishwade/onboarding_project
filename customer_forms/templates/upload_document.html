@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Document</title>
+</head>
+<body>
+    <header>
+        <h1>Upload Document for {{ customer.name }}</h1>
+    </header>
+    
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Submit</button>
+    </form>
+
+    <footer>
+        <p>By following these steps, we aim to streamline the customer onboarding process.</p>
+    </footer>
+</body>
+</html>
