@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from .forms import DocumentForm
-from .models import CustomerDocument
+from .models import CustomerDocument, Customer
 import boto3
 from botocore.exceptions import ClientError
 from django.contrib import messages
@@ -69,6 +69,13 @@ def upload_file(request):
 
 def upload_success(request):
     return render(request, 'upload_success.html')
+
+
+def extracted_data(request, customer):
+    get_data = CustomerDocument.objects.filter(customer=customer)
+    post_data = Customer.objects.filter(customer=customer)
+
+
 
 # ------------------------------------------------------------------------------------------------
 # from django.shortcuts import render, redirect

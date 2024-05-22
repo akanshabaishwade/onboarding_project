@@ -11,7 +11,6 @@ class Country(models.Model):
         return self.name
 
 
-
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     country = models.ForeignKey(Country, on_delete=models.SET_NULL, null=True, blank=True)
@@ -39,22 +38,21 @@ class DocumentSet(models.Model):
         return self.name
 
 class Customer(models.Model):
-    surname = models.CharField(max_length=100)
-    first_name = models.CharField(max_length=100)
+    customer_name = models.CharField(max_length=100,blank=True, null=True)
     nationality = models.ForeignKey(Country, on_delete=models.SET_NULL, null=True, blank=True)
     gender = models.CharField(max_length=10)
-    created_by = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True)
+    aadhar_number = models.CharField(max_length=20, null=True, blank=True)
 
     def __str__(self):
-        return f'{self.first_name} {self.surname}'
+        return f'{self.first_name} {self.last_name}'
 
 
 class CustomerDocument(models.Model):
-    customer = models.ForeignKey(Customer, on_delete=models.CASCADE)
+    customer_name = models.CharField(max_length=100, blank=True, null=True)
     document_file = models.FileField(upload_to='documents/')
     extracted_data = models.JSONField()
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return f'Document for {self.customer}'
+        return f'Document for {self.customer_name}'
 

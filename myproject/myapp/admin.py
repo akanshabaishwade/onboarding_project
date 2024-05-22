@@ -13,20 +13,14 @@ class DocumentSetAdmin(admin.ModelAdmin):
     search_fields = ('name', 'countries__name')
 
 
-class CustomerDocumentInline(admin.TabularInline):
-    model = CustomerDocument
-    readonly_fields = ('extracted_data',)
-
 @admin.register(Customer)
 class CustomerAdmin(admin.ModelAdmin):
-    list_display = ('first_name', 'surname', 'nationality', 'gender', 'created_by')
-    search_fields = ('first_name', 'surname', 'nationality__name')
-    list_filter = ('nationality', 'gender')
-    inlines = [CustomerDocumentInline]
+    list_display = ('customer_name','nationality', 'gender', 'aadhar_number')
+    search_fields = ('customer_name','nationality__name')
+    list_filter = ('nationality', 'gender', 'aadhar_number')
 
 
 @admin.register(CustomerDocument)
 class CustomerDocumentAdmin(admin.ModelAdmin):
-    list_display = ('customer', 'created_at')
-    search_fields = ('customer__first_name', 'customer__surname')
+    list_display = ('customer_name', 'created_at')
     date_hierarchy = 'created_at'
