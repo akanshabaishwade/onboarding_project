@@ -18,7 +18,7 @@ This Django project aims to extract data from PDF files stored in an AWS S3 buck
     AWS_SECRET_ACCESS_KEY = 'your-secret-access-key'
     AWS_STORAGE_BUCKET_NAME = 'your-s3-bucket-name'
     ```
-
+document link - https://docs.aws.amazon.com/code-library/latest/ug/python_3_textract_code_examples.html
 ## Screenshots
 
 - Access key and Secret key generated:
