@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document Uploaded Successfully</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            text-align: center;
+        }
+        h1 {
+            color: #333;
+        }
+        p {
+            color: #666;
+            margin-top: 20px;
+        }
+        .icon {
+            font-size: 48px;
+            color: #4caf50;
+            margin-bottom: 20px;
+        }
+        .button {
+            display: inline-block;
+            background-color: #4caf50;
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            margin-top: 20px;
+        }
+        .button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <i class="icon fas fa-check-circle"></i>
+        <h1>Document Uploaded Successfully</h1>
+        <p>Your document has been successfully uploaded and processed.</p>
+        <a href="{% url 'upload_document' %}" class="button">Upload Another Document</a>
+    </div>
+</body>
+</html>

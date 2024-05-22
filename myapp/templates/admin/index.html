@@ -1,0 +1,11 @@
+{% extends "admin/base_site.html" %}
+
+{% block content %}
+  <h1>Welcome, {{ user.username }}</h1>
+  <div>
+    <a href="{% url 'admin:create_customer' %}">Create Customer</a>
+  </div>
+  <div>
+    <a href="{% url 'admin:myapp_customer_changelist' %}">List Customer</a>
+  </div>
+{% endblock %}
