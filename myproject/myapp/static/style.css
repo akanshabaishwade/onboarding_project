@@ -1,0 +1,160 @@
+/* style.css */
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+h1 {
+    text-align: center;
+    margin-top: 30px;
+}
+
+form {
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+input[type="text"],
+input[type="date"] {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+select {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+input[type="submit"] {
+    background-color: #4CAF50;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 100%;
+    font-size: 16px;
+}
+
+input[type="submit"]:hover {
+    background-color: #45a049;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group h2 {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+
+/* ---------------------------------------------------- */
+table {
+    margin: 0 auto;
+    width: 100%;
+    max-width: 860px;
+    border-collapse: collapse;
+    border-spacing: 0;
+    box-shadow: 0px 20px 30px rgba(0, 0, 0, 0.05);
+    border-radius: 20px;
+}
+
+th {
+    padding: 1rem;
+    border-bottom: 2px dashed #EEEDED;
+    font-weight: 400;
+    font-size: 16px;
+    text-align: center;
+    color: #686868;
+    background: #FFFAEE;
+    border-radius: 20px 0 0 0;
+}
+
+td {
+    padding: 1rem;
+    border-bottom: 2px dashed #EEEDED;
+    font-weight: 400;
+    font-size: 16px;
+    text-align: center;
+    color: #686868;
+    background: #e1f9fa; /* Lighter background color for table data */
+}
+
+th:nth-child(2) {
+    background: #E5F4FB;
+}
+
+th:nth-child(3) {
+    background: #d9dff6;
+}
+
+th:nth-child(4) {
+    background: #a9e9ef;
+}
+
+th:nth-child(5) {
+    background: #c4e9ce; 
+}
+
+tr:last-child td {
+    border-bottom: none;
+}
+
+.center {
+    text-align: center;
+}
+
+tbody tr:hover td {
+    background-color: #beeaeb; /* Hover effect for table rows */
+}
+
+
+/* Add styles for delete and update buttons */
+/* Add styles for delete and update buttons */
+.delete,
+.update {
+    padding: 8px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.delete {
+    background-color: #ec5564;
+    color: #fff;
+}
+
+.update {
+    background-color: #9ac7f5;
+    color: #fff;
+}
+
+.delete:hover,
+.update:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+    color: #000;
+}

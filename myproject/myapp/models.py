@@ -39,12 +39,12 @@ class DocumentSet(models.Model):
 
 class Customer(models.Model):
     customer_name = models.CharField(max_length=100,blank=True, null=True)
-    nationality = models.ForeignKey(Country, on_delete=models.SET_NULL, null=True, blank=True)
+    dob = models.DateField(blank=True, null=True)
     gender = models.CharField(max_length=10)
     aadhar_number = models.CharField(max_length=20, null=True, blank=True)
 
     def __str__(self):
-        return f'{self.first_name} {self.last_name}'
+        return f'{self.customer_name} {self.dob}'
 
 
 class CustomerDocument(models.Model):

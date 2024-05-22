@@ -4,7 +4,7 @@ from .models import Customer, CustomerDocument
 class CustomerForm(forms.ModelForm):
     class Meta:
         model = Customer
-        fields = ['customer_name', 'nationality', 'gender']
+        fields = ['customer_name', 'gender']
 
 class DocumentForm(forms.ModelForm):
     class Meta:

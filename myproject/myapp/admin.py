@@ -15,9 +15,9 @@ class DocumentSetAdmin(admin.ModelAdmin):
 
 @admin.register(Customer)
 class CustomerAdmin(admin.ModelAdmin):
-    list_display = ('customer_name','nationality', 'gender', 'aadhar_number')
-    search_fields = ('customer_name','nationality__name')
-    list_filter = ('nationality', 'gender', 'aadhar_number')
+    list_display = ('customer_name', 'gender', 'aadhar_number')
+    search_fields = ('customer_name',)
+    list_filter = ('gender', 'aadhar_number')
 
 
 @admin.register(CustomerDocument)

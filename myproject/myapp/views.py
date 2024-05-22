@@ -5,7 +5,10 @@ import boto3
 from botocore.exceptions import ClientError
 from django.contrib import messages
 import os
+from django.shortcuts import render, redirect
+from .models import Customer, CustomerDocument, Country
 from django.conf import settings
+
 
 def extract_data_from_s3(bucket, document):
     client = boto3.client('textract')
@@ -22,7 +25,8 @@ def extract_data_from_s3(bucket, document):
             for relationship in block['Relationships']:
                 if relationship['Type'] == 'VALUE':
                     value_block_id = relationship['Ids'][0]
-                    value_block = next(item for item in response['Blocks'] if item['Id'] == value_block_id)
+                    value_block = next(
+                        item for item in response['Blocks'] if item['Id'] == value_block_id)
                     if 'Text' in value_block:
                         value = value_block['Text']
             if 'Text' in block:
@@ -30,6 +34,7 @@ def extract_data_from_s3(bucket, document):
             kvs[key] = value
 
     return kvs
+
 
 def upload_file(request):
     if request.method == 'POST':
@@ -47,7 +52,8 @@ def upload_file(request):
                     Body=file_contents
                 )
 
-                extracted_data = extract_data_from_s3(settings.AWS_STORAGE_BUCKET_NAME, document.document_file.name)
+                extracted_data = extract_data_from_s3(
+                    settings.AWS_STORAGE_BUCKET_NAME, document.document_file.name)
 
                 if extracted_data:
                     document.extracted_data = extracted_data
@@ -74,7 +80,6 @@ def upload_success(request):
 def extracted_data(request, customer):
     get_data = CustomerDocument.objects.filter(customer=customer)
     post_data = Customer.objects.filter(customer=customer)
-
 
 
 # ------------------------------------------------------------------------------------------------
@@ -120,3 +125,44 @@ def extracted_data(request, customer):
 # class DocumentUploadedView(View):
 #     def get(self, request):
 #         return render(request, 'document_uploaded.html')
+
+
+
+def create_or_select_customer(request):
+    if request.method == 'POST':
+        customer_name = request.POST.get('existing_customer')
+
+        if not customer_name:  
+            customer_name = request.POST.get('customer_name')
+            dob = request.POST.get('dob')
+            gender = request.POST.get('gender')
+            aadhar_number = request.POST.get('aadhar_number')
+            Customer.objects.create(
+                customer_name=customer_name, dob=dob, gender=gender, aadhar_number=aadhar_number)
+        else:
+            customer_document = CustomerDocument.objects.filter(
+                customer_name=customer_name).first()
+            if customer_document:
+                extracted_data = customer_document.extracted_data
+
+                if isinstance(extracted_data, dict):
+                    dob = extracted_data.get('dob')
+                    gender = extracted_data.get('gender')
+                    aadhar_number = extracted_data.get('aadhar_number')
+
+                    Customer.objects.create(
+                        customer_name=customer_name, dob=dob, gender=gender, aadhar_number=aadhar_number)
+                else:
+                    pass
+
+        return redirect('customer_list')
+
+    customer_names = CustomerDocument.objects.values_list(
+        'customer_name', flat=True).distinct()
+
+    return render(request, 'create_or_select_customer.html', {'customer_names': customer_names})
+
+
+def customer_list(request):
+    customers = Customer.objects.all()
+    return render(request, 'customer_list.html', {'customers': customers})
