@@ -71,46 +71,45 @@ def upload_success(request):
     return render(request, 'upload_success.html')
 
 # ------------------------------------------------------------------------------------------------
-from django.shortcuts import render, redirect
-from django.views import View
-from .forms import DocumentForm
-from .models import CustomerDocument
-import fitz  # PyMuPDF
-import json
+# from django.shortcuts import render, redirect
+# from django.views import View
+# from .forms import DocumentForm
+# import fitz  # PyMuPDF
+# import json
 
-class UploadDocumentView(View):
-    def get(self, request):
-        form = DocumentForm()
-        return render(request, 'upload.html', {'form': form})
+# class UploadDocumentView(View):
+#     def get(self, request):
+#         form = DocumentForm()
+#         return render(request, 'upload.html', {'form': form})
 
-    def post(self, request):
-        form = DocumentForm(request.POST, request.FILES)
-        if form.is_valid():
-            document = form.save(commit=False)
-            document.file_name = request.FILES['document_file'].name  # Save the file name
+#     def post(self, request):
+#         form = DocumentForm(request.POST, request.FILES)
+#         if form.is_valid():
+#             document = form.save(commit=False)
+#             document.file_name = request.FILES['document_file'].name  # Save the file name
 
-            # Process the uploaded PDF with PyMuPDF
-            extracted_data = self.extract_data_from_pdf(document.document_file.path)
+#             # Process the uploaded PDF with PyMuPDF
+#             extracted_data = self.extract_data_from_pdf(document.document_file.path)
 
-            # Update the document with extracted data
-            document.extracted_data = extracted_data
-            document.save()
+#             # Update the document with extracted data
+#             document.extracted_data = extracted_data
+#             document.save()
 
-            return redirect('document_uploaded')  # Redirect to a success page
-        return render(request, 'upload.html', {'form': form})
+#             return redirect('document_uploaded')  # Redirect to a success page
+#         return render(request, 'upload.html', {'form': form})
 
-    def extract_data_from_pdf(self, pdf_path):
-        pdf_document = fitz.open(pdf_path)
-        pdf_text = ""
-        for page_num in range(pdf_document.page_count):
-            page = pdf_document[page_num]
-            pdf_text += page.get_text()
-        pdf_document.close()
+#     def extract_data_from_pdf(self, pdf_path):
+#         pdf_document = fitz.open(pdf_path)
+#         pdf_text = ""
+#         for page_num in range(pdf_document.page_count):
+#             page = pdf_document[page_num]
+#             pdf_text += page.get_text()
+#         pdf_document.close()
 
-        # Convert text to JSON
-        text_json = {'text': pdf_text}
-        return json.dumps(text_json)
+#         # Convert text to JSON
+#         text_json = {'text': pdf_text}
+#         return json.dumps(text_json)
 
-class DocumentUploadedView(View):
-    def get(self, request):
-        return render(request, 'document_uploaded.html')
+# class DocumentUploadedView(View):
+#     def get(self, request):
+#         return render(request, 'document_uploaded.html')
