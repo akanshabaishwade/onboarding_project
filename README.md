@@ -25,11 +25,26 @@ document link - https://docs.aws.amazon.com/code-library/latest/ug/python_3_text
 ![Access key and Secret key](https://github.com/akanshabaishwade/onboarding_project/assets/85228361/b39e9543-0711-4f46-af21-42d41801c56d)
 
 - Document Upload:
-  ![Document Upload](https://github.com/akanshabaishwade/onboarding_project/assets/85228361/cf98f855-4f9a-461c-8563-0124b3d00b45)
+![Sucessfully uploaded with massage](https://github.com/akanshabaishwade/onboarding_project/assets/85228361/72a0384b-0897-493b-817b-5725e110af4a)
 
-- Error:
-  ![Error](https://github.com/akanshabaishwade/onboarding_project/assets/85228361/e9a5cf2b-a090-4028-b0d3-3c344e39f282)
+- **Redirect to Customer List**: ![Redirect to Customer List](https://github.com/akanshabaishwade/onboarding_project/assets/85228361/cb8cf7f2-572a-4f2f-9dab-2eba5ef96607)
 
+- **Surprit Kaur User Record Extraction**:
+- **Text Extraction**: User data extracted using AWS Textract from customer onboarding forms.
+- **Update or Create Records**: Extracted data used to update existing records or create new records in the Customer model.
+- **Create New Records**: When new data is uploaded, new records are created in the CustomerDocument model.
+
+- **Solved Error**:
+  - ![Error](https://github.com/akanshabaishwade/onboarding_project/assets/85228361/e9a5cf2b-a090-4028-b0d3-3c344e39f282)
+
+- **Steps for Solving Error**:
+  - **Generate a New Access Key**: Old key lacked necessary access permissions.
+  - **Import boto3**: Use boto3 library.
+  - **Create a New View**: Replace old code with new code for document processing.
+  - **Use detect_document_text**: Utilize detect_document_text function for accurate text extraction.
+  - **Create JSON Data**: Format extracted text into JSON as needed.
+  - **Upload to Relevant Models**: Upload JSON data into appropriate database models.
+  
 - Customer Data Upload Form:
   ![Customer Data Upload Form](https://github.com/akanshabaishwade/onboarding_project/assets/85228361/efa4ae0a-8cd4-4254-bd97-8d9b0ed1c05f)
 
