@@ -29,7 +29,7 @@ document link - https://docs.aws.amazon.com/code-library/latest/ug/python_3_text
 
 - **Redirect to Customer List**: ![Redirect to Customer List](https://github.com/akanshabaishwade/onboarding_project/assets/85228361/cb8cf7f2-572a-4f2f-9dab-2eba5ef96607)
 
-- **Surprit Kaur User Record Extracted by AWS Textract**:
+- **Surprit Kaur User Record Extracted by AWS Textract**
 - **Text Extraction**: User data extracted using AWS Textract from customer onboarding forms.
 - **Update or Create Records**: Extracted data used to update existing records or create new records in the Customer model.
 - **Create New Records**: When new data is uploaded, new records are created in the CustomerDocument model.
