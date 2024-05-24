@@ -27,6 +27,10 @@ document link - https://docs.aws.amazon.com/code-library/latest/ug/python_3_text
 - Document Upload:
 ![Sucessfully uploaded with massage](https://github.com/akanshabaishwade/onboarding_project/assets/85228361/72a0384b-0897-493b-817b-5725e110af4a)
 
+- Uploaded Document:
+  
+![aadharcard_dummy](https://github.com/akanshabaishwade/onboarding_project/assets/85228361/72a6dcaa-64c9-4345-966c-c38e4c154d53)
+
 - **Redirect to Customer List**: ![Redirect to Customer List](https://github.com/akanshabaishwade/onboarding_project/assets/85228361/cb8cf7f2-572a-4f2f-9dab-2eba5ef96607)
 
 - **Surprit Kaur User Record Extracted by AWS Textract**
